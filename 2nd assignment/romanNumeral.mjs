@@ -1,26 +1,21 @@
-import test from './test.mjs'
-import romanNumeralConverter from '../romanNumeral.mjs'
+function romanNumeralConverter(nInt) {
 
-const tester = test("Roman Numeral Tests");
+    const romanMapping = [
+        [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+        [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+        [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]
+    ];
+    
+    let output = "";
+    for (const [value, symbol] of romanMapping) {
+        while (nInt >= value) {
+            output += symbol;
+            nInt -= value;
+        }
+    }
 
-tester.dosNotThrowError(() => { romanNumeralConverter(1) }, "Roman numeral converter is defined");
+    return output;
 
-tester.isEqual(romanNumeralConverter(1), "I", "Converting 1 to Roman");
-tester.isEqual(romanNumeralConverter(2), "II", "Converting 2 to Roman");
-tester.isEqual(romanNumeralConverter(3), "III", "Converting 3 to Roman");
-tester.isEqual(romanNumeralConverter(4), "IV", "Converting 4 to Roman");
-tester.isEqual(romanNumeralConverter(5), "V", "Converting 5 to Roman");
-tester.isEqual(romanNumeralConverter(7), "VII", "Converting 7 to Roman");
-tester.isEqual(romanNumeralConverter(9), "IX", "Converting 9 to Roman");
-tester.isEqual(romanNumeralConverter(10), "X", "Converting 10 to Roman");
-tester.isEqual(romanNumeralConverter(40), "XL", "Converting 40 to Roman");
-tester.isEqual(romanNumeralConverter(90), "XC", "Converting 90 to Roman");
-tester.isEqual(romanNumeralConverter(400), "CD", "Converting 400 to Roman");
-tester.isEqual(romanNumeralConverter(900), "CM", "Converting 900 to Roman");
-tester.isEqual(romanNumeralConverter(1000), "M", "Converting 1000 to Roman");
+}
 
-tester.throwsError(() => { romanNumeralConverter(0) }, "Error for input below 1");
-tester.throwsError(() => { romanNumeralConverter(1001) }, "Error for input above 1000");
-
-
-
+export default romanNumeralConverter

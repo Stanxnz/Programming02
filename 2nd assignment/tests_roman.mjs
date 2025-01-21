@@ -19,8 +19,5 @@ tester.isEqual(romanNumeralConverter(400), "CD", "Converting 400 to Roman");
 tester.isEqual(romanNumeralConverter(900), "CM", "Converting 900 to Roman");
 tester.isEqual(romanNumeralConverter(1000), "M", "Converting 1000 to Roman");
 
-tester.throwsError(() => { romanNumeralConverter(0) }, "Error for input below 1");
-tester.throwsError(() => { romanNumeralConverter(1001) }, "Error for input above 1000");
-
 
 

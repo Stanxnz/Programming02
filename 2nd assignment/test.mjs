@@ -21,17 +21,6 @@ function dosNotThrowError(testFunction, description) {
 
 }
 
-
-function isInRange(recived, expectedLowerBound, expectedUpperBound, description) {
-
-    if (recived >= expectedLowerBound && recived <= expectedUpperBound) {
-        console.log(`🟢 ${description}`);
-    } else {
-        console.log(`🔴 ${description}. Expected ${expected}, recived ${recived}`);
-    }
-
-}
-
 function isEqual(recived, expected, description) {
 
     if (recived === expected) {
